@@ -1,4 +1,4 @@
-package arie.notesapp;
+package arie.notesapp.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import arie.notesapp.NoteHelper;
 import arie.notesapp.db.DatabaseContract;
 
 import static arie.notesapp.db.DatabaseContract.AUTHORITY;
@@ -20,11 +21,7 @@ public class NoteProvider extends ContentProvider {
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
-
-        // content://com.dicoding.mynotesapp/note
         sUriMatcher.addURI(AUTHORITY, DatabaseContract.TABLE_NOTE, NOTE);
-
-        // content://com.dicoding.mynotesapp/note/id
         sUriMatcher.addURI(AUTHORITY,
                 DatabaseContract.TABLE_NOTE+ "/#",
                 NOTE_ID);
